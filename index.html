@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="reveal.js/css/reveal.css" />
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme" />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+
+  <body>
+    <script type="text/javascript" src="js/d3.v3.min.js"></script>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Real Analysis</h1>
+          <p style="font-size: 48px">Prerak Srivastava</p>
+          <p style="font-size: 48px">Agrim Rawat</p>
+          <p>Monsoon Semester @ IIITH '22</p>
+        </section>
+        <section>
+          <h1>Complex Analysis</h1>
+          <!-- <a
+            href="http://www.cs.cornell.edu/courses/cs2800/2011fa/Lectures/induction.pdf"
+            style="text-align: left; font-size: 15px"
+            >Reference Paper</a
+          > -->
+        </section>
+        <section>
+          <h3>References</h3>
+          <a
+            href="https://www.youtube.com/watch?v=Rju2g-sExng&list=PLDcSwjT2BF_UDdkQ3KQjX5SRQ2DLLwv0R&index=2&ab_channel=Mathemaniac"
+            style="text-align: left; font-size: 15px"
+            >Complex Numbers Crash Course</a
+          >
+          <br>
+          <a
+            href="https://www.youtube.com/watch?v=5PcpBw5Hbwo&ab_channel=3Blue1Brown"
+            style="text-align: left; font-size: 15px"
+          >3B1B Video on Complex Analysis</a
+          >
+          <br>
+          <!-- <a
+          href="https://www.youtube.com/watch?v=NtoIXhUgqSk&list=PLDcSwjT2BF_UDdkQ3KQjX5SRQ2DLLwv0R&index=3&ab_channel=Mathemaniac"
+          style="text-align: left; font-size: 15px"
+          >Complex Functions Visualization</a
+          > -->
+        </section>
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        <section data-auto-animate>
+          <h2 style="font-weight: bold">Introduction</h2>
+          <br>
+          <h3>Problem</h3>
+          <p style="text-align: left; font-weight: bold">
+            <br />
+            $$ \text{Find the solutions of the given equations} \\x^2 + 1 = 0 \\ x^2 + 4x + 5 = 0 \\ $$
+          </p>
+        </section>
+        <section>
+          <!-- <h2 style="font-weight: bold">Introduction</h2> -->
+          <!-- <br> -->
+          <h3>Solution</h3>
+          <p style="text-align: left; font-weight: bold">
+            • We define $i$ to be the "imaginary unit"<br /><br />
+            $$ i = \sqrt{-1} $$
+          </p>
+        </section>
+        <section>
+          <!-- <h3 style="font-weight: bold">Strong v/s Weak Induction</h3> -->
+          <h3>Solution</h3>
+          <!-- <p>
+            The difference between weak induction and strong induction appears
+            in the induction hypothesis
+          </p> -->
+          <p style="text-align: left; font-weight: bold">
+            <br />
+            $$ x^2 + 1 = 0 \\ x^2 = -1 \\ x = \pm i \\ 
+              \\ ------- \\ x^2 + 4x + 5 = 0 
+             \\ D = b^2 - 4ac
+             \\ D = 4^2 - 4(1)(5)
+              \\ D = -4
+              \\ x = \frac{-b \pm \sqrt{D}}{2a}
+              \\ x = -2 \pm i $$
+          </p>
+        </section>
+        <section>
+          <!-- <h2 style="font-weight: bold">Introduction</h2> -->
+          <!-- <br> -->
+          <h3>General Notation</h3>
+          <p style="text-align: left; font-weight: bold">
+            • Cartesian Form - $a+ib$<br /><br />
+            • Polar Form - $r e^{i\theta}$<br /><br />
+            • $r = \sqrt{a^2 + b^2}$<br /><br />
+            • $\theta = \tan^{-1}(\frac{b}{a})$
+          </p>
+        </section>
+        <section>
+          <img src="images/cartesian.png" />
+        </section>
+        <section>
+          <img src="images/polar.png" />
+        </section>
+        <section>
+          <h3>Conventions and Notations</h3>
+          <p style="text-align: left; font-weight: bold">
+            • The math is similar to that of vectors<br /><br />
+            • Real Part - $Re(z) = r\cos(\theta) = a$<br /><br />
+            • Imaginary Part - $Im(z) = r\sin(\theta) = b$<br /><br />
+            • Modulus - $|z| = r = \sqrt{a^2 + b^2}$ - always non-negative<br /><br />
+            • Argument - $arg(z) = \theta = \tan^{-1}(\frac{b}{a}) $<br /><br />
+            • Principle Argument - $arg(z) \in (-\pi, \pi] $ - pick smaller angle <br /><br />
+            • Anticlockwise angle is considered positive
+          </p>
+        </section>
+        <section>
+          <h3>Property of $i$</h3>
+          <p style="text-align: left; font-weight: bold">
+            • $i^2 = -1$<br /><br />
+            • $i^3 = -i$<br /><br />
+            • $i^4 = 1$<br /><br />
+            • $i^5 = i$<br /><br />
+            $$
+              i^n = 
+              \begin{cases}
+              1 &  ,\ n = 4x \\ 
+              i &  ,\ n = 4x + 1 \\ 
+              -1 &  ,\ n = 4x + 2 \\ 
+              -i &  ,\ n = 4x + 3 \\ 
+              \end{cases} \\ \\ \text{Here} \ x \in \mathbb{Z} \\
+            $$
+          </p>
+        </section>
+        <section data-state="IonSlide">
+          <h3>Euler's Formula</h3>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Given</h3>
+              </boxTitle>
+              <p>
+                $$
+            |z| = r \\ 
+            Re(z) = r\cos(\theta)\\
+            Im(z) = r\sin(\theta)\\
+            z = r(\cos(\theta) + i\sin(\theta)) \\
+            $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Taylor Series Expansion</h3>
+              </boxTitle>
+              <p>
+                $$
+                \text{Using taylor series expansion for sine and cosine, we get} \\
+                sin(x) = \sum_{j=1}^{\infty}\frac{(-1)^j}{(2j+1)!}x^{2j+1} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots \\ 
+                cos(x) = \sum_{j=0}^{\infty}\frac{(-1)^j}{(2j)!}x^{2j} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots \\
+                $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Proof</h3>
+              </boxTitle>
+              <p>
+                $$
+                cos(x) + isin(x) = 1 + ix - \frac{x^2}{2} - i\frac{x^3}{3} + \frac{x^4}{4} + i\frac{x^5}{5} - \frac{x^6}{6} - i\frac{x^7}{7} + \cdots \\
+                $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Observation and Conclusion</h3>
+              </boxTitle>
+              <p>
+                $$
+                e^x = \sum_{j=0}^{\infty}\frac{x^j}{j!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots \\
+                e^{ix} = \sum_{j=0}^{\infty}\frac{(ix)^j}{j!} = 1 + ix - \frac{x^2}{2!} - i\frac{x^3}{3!} + \frac{x^4}{4!} + i\frac{x^5}{5!} - \frac{x^6}{6!} - i\frac{x^7}{7!} + \cdots \\
+                \therefore e^{ix} = cos(x) + isin(x) \\
+                $$
+              </p>
+            </textBox>
+          </section>
+        </section>
+        <section data-state="IonSlide">
+          <h3>Properties of Modulus and Amplitude</h3>
+          <!-- <br />
+          <h4>Prove the following statement is true for all integers $n$.</h4> -->
+          <!-- $$P:\sum_{i=1}^n i = \frac{n(n+1)}{2}$$ -->
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Modulus Function</h3>
+              </boxTitle>
+              <p>
+                $$
+                |z_1z_2| = |z_1||z_2| \\
+                |\frac{z_1}{z_2}| = \frac{|z_1|}{|z_2|} \\
+                z - \bar{z} = |z|^2 = z\bar{z} \\ 
+                |z^n| = |z|^n
+                $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Amplitude Function</h3>
+              </boxTitle>
+              <p>
+                Amplitude function works similar to the logarithmic function $y = log(x)$
+                $$
+                  arg(z_1z_2) = arg(z_1) + arg(z_2) \\
+                  arg(\frac{z_1}{z_2}) = arg(z_1) - arg(z_2) \\
+                  arg(z^n) = n \cdot arg(z) \\
+                  arg(x) = 0 \ \forall \ x \in R^{+} \\ 
+                  arg(x) = \pi \ \forall \ x \in R^{-} 
+                $$
+              </p>
+            </textBox>
+          </section>
+        </section>
+        <section data-state="IonSlide">
+          <h3>Some More Properties of Complex Numbers</h3>
+          <!-- <br />
+          <h4>Prove the following statement is true for all integers $n$.</h4> -->
+          <!-- $$P:\sum_{i=1}^n i = \frac{n(n+1)}{2}$$ -->
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Addition and Subtraction</h3>
+              </boxTitle>
+              <p>
+                $$
+                z_1 + z_2 = (a_1 + b_1i) + (a_2 + b_2i) = (a_1 + a_2) + (b_1 + b_2)i \\
+                z_1 - z_2 = (a_1 + b_1i) - (a_2 + b_2i) = (a_1 - a_2) + (b_1 - b_2)i \\
+                $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Multiplication and Division</h3>
+              </boxTitle>
+              <p>
+                $$
+                z_1z_2 = (a_1 + b_1i)(a_2 + b_2i) = (a_1a_2 - b_1b_2) + (a_1b_2 + a_2b_1)i \\
+                z_1z_2 = (r_1e^{i\theta_1})(r_2e^{i\theta_2}) = r_1r_2e^{i(\theta_1 + \theta_2)} \\
+                \frac{z_1}{z_2} = \frac{r_1e^{i\theta_1}}{r_2e^{i\theta_2}} = r_1e^{i(\theta_1 - \theta_2)} \\
+                \frac{a_1 + ib_1}{a_2 + ib_2} = \frac{a_1 + ib_1}{a_2 + ib_2} \cdot \frac{a_2 - ib_2}{a_2 - ib_2} = \frac{a_1a_2 + b_1b_2}{a_2^2 + b_2^2} + \frac{a_2b_1 - a_1b_2}{a_2^2 + b_2^2}i \\
+                $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>De-Moivre's Theorem</h3>
+              </boxTitle>
+              <p>
+                $$
+                  z = r e^{i\theta} \\
+                  z^n = r^n e^{i\theta n} \\
+                  z^n = r^n(cos(n\theta ) + isin(n\theta)) \\
+                  \text{At } r = 1 \\
+                  (cos(\theta) + isin(\theta))^n = cos(n\theta) + isin(n\theta) \\
+                $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>Triangular Inequality</h3>
+              </boxTitle>
+              <p>
+                $$
+                |z_1 + z_2| = \sqrt{|z_1|^2 + |z_2|^2 + 2|z_1||z_2|\cos(\phi)} \\ \phi = arg(z_1 - z_2) \\
+                \therefore |z_1 + z_2| \leq |z_1| + |z_2| \\ \text{Equality is reached at } \phi = 0 \\
+                \text{The above formula can be generalized to} \\ 
+                \sum_{i=1}^n |z_i| \leq \sum_{i=1}^n |z_i| \\
+                $$
+              </p>
+            </textBox>
+          </section>
+          <section style="margin-top: 10%">
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>$n^{th}$ root</h3>
+              </boxTitle>
+              <p>
+                $$
+                  \text{For 2 complex numbers} \ w \ \text{and} \ z \\
+                  \text{Let } w^n = z \\ 
+                  w = r_1e^{i\theta_1} \ \text{and} \ z = r_2e^{i\theta_2} \\
+                  z^n = r_2^n e^{i\theta_2n} \\
+                  \therefore r_1^n = r_2 \ \text{and} \ \theta_1n = \theta_2 + 2k\pi \\ 
+                  0 \leq k \leq n - 1 \\
+                  \therefore w = r_2^{\frac{1}{n}}e^{i\frac{\theta_2 + 2k\pi}{n}} \\
+
+                $$
+              </p>
+            </textBox>
+          </section>
+        </section>
+        <section data-state="IonSlide">
+          <h2>Examples</h2>
+          <br />
+          <!-- <h3>Q1</h3> -->
+          <p>Find the modulus and amplitude of the following complex numbers</p>
+          <p style="text-align: left; font-weight: bold">
+            1. $0$<br /><br>
+            2. $i^i$<br /><br>
+            3. $z = a^i, a \in R$<br /><br>
+            4. $\log(-2)$
+          </p>
+        </section>
+        <script src="js/ionChannelAnim.js"></script>
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+        <section>
+          <h3>Solution</h3>
+          <br />
+          <section>
+            <textBox touch-action="none">
+              <boxTitle>
+                <h3>1.1</h3>
+              </boxTitle>
+              <p>
+                It is just a matter of convention, it can be considered to be 0 or undefined.
+              </p>
+            </textBox>
+          </section>
+          <section>
+            <textBox>
+              <boxTitle>
+                <h3>1.2</h3>
+              </boxTitle>
+              $$
+                z = a^i \\
+                e^{\log(z)} = e^{i \cdot \log(a)} \\
+                \therefore |z| = |e^{i \cdot \log(a)}| = 1 \\ \text{and} \\ arg(z) = \log(a) \\
+              $$
+            </textBox>
+          </section>
+          <section>
+            <textBox>
+              <boxTitle>
+                <h3>1.3</h3>
+              </boxTitle>
+              $$
+                i^i = e^{\log(i^i)} \\
+                i^i = e^{i \cdot \log(i)} \\
+                i = e^{i \cdot \frac{\pi}{2}} = \cos(\frac{\pi}{2}) + i\cdot \sin(\frac{\pi}{2}) \\
+                \implies i^i = e^{i \cdot \log(e^{i \cdot \frac{\pi}{2}})} \\
+                \implies i^i = e^{ i \cdot i \cdot \frac{\pi}{2}} \\
+                \therefore \ i^i = e^{-\frac{\pi}{2}} \\
+
+              $$
+            </textBox>
+          </section>
+          <section>
+            <textBox>
+              <boxTitle>
+                <h3>1.4</h3>
+              </boxTitle>
+              $$
+                z = |z|e^{i\theta} \\ 
+                log(z) = log(|z|e^{i\theta}) \\
+                log(z) = log(|z|) + log(e^{i\theta}) \\
+                \therefore log(z) = log(|z|) + i\theta \\
+                \therefore log(-2) = log(2) + \pi i \\ 
+              $$
+            </textBox>
+          </section>
+        </section>
+        <!-- ################################################### -->
+        <!-- ################################################### -->
+      </div>
+    </div>
+    <!-- ################################################### -->
+    <!-- ################################################### -->
+    <!-- ################################################### -->
+    <!-- ################################################### -->
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // width: 960,
+        // height:700,
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        // default/cube/page/concave/zoom/linear/fade/none
+        transition: Reveal.getQueryHash().transition || "slide",
+
+        //// Optional libraries used to extend on reveal.js
+        dependencies: [
+          // { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          // { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          {
+            src: "reveal.js/plugin/notes/notes.js",
+            async: true,
+            condition: function () {
+              return !!document.body.classList;
+            },
+          },
+          { src: "reveal.js/plugin/math/math.js", async: true },
+        ],
+      });
+      Reveal.configure({
+        keyboard: {
+          32: null, // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding) document.body.style.cursor = 'none';
+        },
+      });
+    </script>
+  </body>
+</html>
